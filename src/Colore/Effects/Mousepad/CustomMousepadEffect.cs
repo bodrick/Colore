@@ -115,7 +115,7 @@ namespace Colore.Effects.Mousepad
         {
             get
             {
-                if (led < 0 || led >= MousepadConstants.MaxLeds)
+                if (led is < 0 or >= MousepadConstants.MaxLeds)
                 {
                     throw new ArgumentOutOfRangeException(
                         nameof(led),
@@ -128,7 +128,7 @@ namespace Colore.Effects.Mousepad
 
             set
             {
-                if (led < 0 || led >= MousepadConstants.MaxLeds)
+                if (led is < 0 or >= MousepadConstants.MaxLeds)
                 {
                     throw new ArgumentOutOfRangeException(
                         nameof(led),
@@ -190,7 +190,7 @@ namespace Colore.Effects.Mousepad
         /// <returns>
         /// A 32-bit signed integer that is the hash code for this instance.
         /// </returns>
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             return _colors?.GetHashCode() ?? 0;
         }
@@ -225,7 +225,7 @@ namespace Colore.Effects.Mousepad
         /// </returns>
         public override bool Equals(object? obj)
         {
-            return !(obj is null) && obj is CustomMousepadEffect custom && Equals(custom);
+            return obj is CustomMousepadEffect custom && Equals(custom);
         }
 
         /// <inheritdoc />

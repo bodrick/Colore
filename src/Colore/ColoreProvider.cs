@@ -58,12 +58,12 @@ namespace Colore
         /// Creates a new <see cref="IChroma" /> instance using the native Razer Chroma SDK.
         /// </summary>
         /// <returns>A new instance of <see cref="IChroma" />.</returns>
-        public static async Task<IChroma> CreateNativeAsync()
+        public static Task<IChroma> CreateNativeAsync()
         {
             Log.Debug("Creating new native IChroma instance");
 
             // The native SDK currently does not make use of application info
-            return await CreateAsync(null, new NativeApi()).ConfigureAwait(false);
+            return CreateAsync(null, new NativeApi());
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace Colore
         /// <param name="info">Information about the application.</param>
         /// <param name="endpoint">The endpoint to use for initializing the Chroma SDK.</param>
         /// <returns>A new instance of <see cref="IChroma" />.</returns>
-        public static async Task<IChroma> CreateRestAsync(AppInfo info, string endpoint = RestApi.DefaultEndpoint)
+        public static Task<IChroma> CreateRestAsync(AppInfo info, string endpoint = RestApi.DefaultEndpoint)
         {
-            return await CreateRestAsync(info, new Uri(endpoint)).ConfigureAwait(false);
+            return CreateRestAsync(info, new Uri(endpoint));
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Colore
         /// <param name="endpoint">The endpoint to use for initializing the Chroma SDK.</param>
         /// <returns>A new instance of <see cref="IChroma" />.</returns>
         [SuppressMessage("ReSharper", "CA2000", Justification = "Caller can dispose allocated resources with IChroma.Dispose")]
-        public static async Task<IChroma> CreateRestAsync(AppInfo info, Uri endpoint)
+        public static Task<IChroma> CreateRestAsync(AppInfo info, Uri endpoint)
         {
             if (endpoint is null)
             {
@@ -105,7 +105,7 @@ namespace Colore
 
             Log.DebugFormat("Creating new REST API IChroma instance at {0}", endpoint.ToString());
 
-            return await CreateAsync(info, new RestApi(new RestClient(endpoint))).ConfigureAwait(false);
+            return CreateAsync(info, new RestApi(new RestClient(endpoint)));
         }
 
         /// <summary>

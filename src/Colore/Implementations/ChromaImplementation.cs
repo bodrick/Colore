@@ -354,8 +354,7 @@ namespace Colore.Implementations
 
             var sdkDeviceInfo = await _api.QueryDeviceAsync(deviceId).ConfigureAwait(false);
             var deviceMetadata = Devices.GetDeviceMetadata(deviceId);
-            var deviceInfo = new DeviceInfo(sdkDeviceInfo, deviceId, deviceMetadata);
-            return deviceInfo;
+            return new DeviceInfo(sdkDeviceInfo, deviceId, deviceMetadata);
         }
 
         /// <inheritdoc />

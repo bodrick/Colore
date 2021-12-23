@@ -98,10 +98,10 @@ namespace Colore.Implementations
         /// Sets the color of all components on this device.
         /// </summary>
         /// <param name="color">Color to set.</param>
-        public override async Task<Guid> SetAllAsync(Color color)
+        public override Task<Guid> SetAllAsync(Color color)
         {
             _custom.Set(color);
-            return await SetCustomAsync(_custom).ConfigureAwait(false);
+            return SetCustomAsync(_custom);
         }
 
         /// <inheritdoc />
@@ -140,19 +140,19 @@ namespace Colore.Implementations
         /// Sets a <see cref="StaticKeypadEffect" /> effect on the keypad.
         /// </summary>
         /// <param name="color">Color of the effect.</param>
-        public async Task<Guid> SetStaticAsync(Color color)
+        public Task<Guid> SetStaticAsync(Color color)
         {
-            return await SetStaticAsync(new StaticKeypadEffect(color)).ConfigureAwait(false);
+            return SetStaticAsync(new StaticKeypadEffect(color));
         }
 
         /// <inheritdoc cref="DeviceImplementation.ClearAsync" />
         /// <summary>
         /// Clears the current effect on the Keypad.
         /// </summary>
-        public override async Task<Guid> ClearAsync()
+        public override Task<Guid> ClearAsync()
         {
             _custom.Clear();
-            return await SetEffectAsync(KeypadEffectType.None).ConfigureAwait(false);
+            return SetEffectAsync(KeypadEffectType.None);
         }
     }
 }

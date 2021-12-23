@@ -22,7 +22,6 @@
 //     "Razer" is a trademark of Razer USA Ltd.
 // </copyright>
 // ---------------------------------------------------------------------------------------
-#pragma warning disable CA1051 // Do not declare visible instance fields
 
 namespace Colore.Effects.Keypad
 {
@@ -89,7 +88,7 @@ namespace Colore.Effects.Keypad
         /// <returns>
         /// <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(StaticKeypadEffect other)
+        public readonly bool Equals(StaticKeypadEffect other)
         {
             return Color.Equals(other.Color);
         }
@@ -102,9 +101,9 @@ namespace Colore.Effects.Keypad
         /// <returns>
         /// <c>true</c> if <paramref name="obj" /> and this instance are the same type and represent the same value; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object? obj)
+        public readonly override bool Equals(object? obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
             }
@@ -115,7 +114,7 @@ namespace Colore.Effects.Keypad
         /// <inheritdoc />
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>A 32-bit signed integer that is the hash code for this instance.</returns>
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             return Color.GetHashCode();
         }

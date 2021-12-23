@@ -128,9 +128,9 @@ namespace Colore.Implementations
         /// </summary>
         /// <param name="color">The color to use.</param>
         /// <param name="led">Which LED(s) to affect.</param>
-        public async Task<Guid> SetStaticAsync(Color color, Led led = Led.All)
+        public Task<Guid> SetStaticAsync(Color color, Led led = Led.All)
         {
-            return await SetStaticAsync(new StaticMouseEffect(led, color)).ConfigureAwait(false);
+            return SetStaticAsync(new StaticMouseEffect(led, color));
         }
 
         /// <inheritdoc cref="DeviceImplementation.SetAllAsync" />
@@ -138,10 +138,10 @@ namespace Colore.Implementations
         /// Sets the color of all LEDs on the mouse.
         /// </summary>
         /// <param name="color">Color to set.</param>
-        public override async Task<Guid> SetAllAsync(Color color)
+        public override Task<Guid> SetAllAsync(Color color)
         {
             _custom.Set(color);
-            return await SetGridAsync(_custom).ConfigureAwait(false);
+            return SetGridAsync(_custom);
         }
 
         /// <inheritdoc />
@@ -158,10 +158,10 @@ namespace Colore.Implementations
         /// <summary>
         /// Clears the current effect on the Mouse.
         /// </summary>
-        public override async Task<Guid> ClearAsync()
+        public override Task<Guid> ClearAsync()
         {
             _custom.Clear();
-            return await SetEffectAsync(MouseEffectType.None).ConfigureAwait(false);
+            return SetEffectAsync(MouseEffectType.None);
         }
     }
 }

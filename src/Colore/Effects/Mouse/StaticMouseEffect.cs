@@ -119,18 +119,18 @@ namespace Colore.Effects.Mouse
         /// <summary>
         /// Indicates whether this instance and a specified object are equal.
         /// </summary>
-        /// <param name="other">The object to compare with the current instance. </param>
+        /// <param name="obj">The object to compare with the current instance. </param>
         /// <returns>
-        /// <c>true</c> if <paramref name="other" /> and this instance are the same type and represent the same value; otherwise, <c>false</c>.
+        /// <c>true</c> if <paramref name="obj" /> and this instance are the same type and represent the same value; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object? other)
+        public override bool Equals(object? obj)
         {
-            if (other is null)
+            if (obj is null)
             {
                 return false;
             }
 
-            return other is StaticMouseEffect effect && Equals(effect);
+            return obj is StaticMouseEffect effect && Equals(effect);
         }
 
         /// <inheritdoc />

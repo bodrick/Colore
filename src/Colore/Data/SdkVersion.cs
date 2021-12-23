@@ -148,7 +148,7 @@ namespace Colore.Data
         /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public bool Equals(SdkVersion other)
+        public readonly bool Equals(SdkVersion other)
         {
             return Major == other.Major && Minor == other.Minor && Revision == other.Revision;
         }
@@ -160,7 +160,7 @@ namespace Colore.Data
         /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
         /// </returns>
         /// <param name="obj">Another object to compare to. </param>
-        public override bool Equals(object obj)
+        public readonly override bool Equals(object obj)
         {
             return obj is SdkVersion version && Equals(version);
         }
@@ -171,7 +171,7 @@ namespace Colore.Data
         /// <returns>
         /// A 32-bit signed integer that is the hash code for this instance.
         /// </returns>
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             unchecked
             {
@@ -209,7 +209,7 @@ namespace Colore.Data
         /// </list>
         /// </returns>
         /// <param name="other">An object to compare with this object.</param>
-        public int CompareTo(SdkVersion other)
+        public readonly int CompareTo(SdkVersion other)
         {
             if (Major != other.Major)
             {
@@ -247,11 +247,9 @@ namespace Colore.Data
         /// </returns>
         /// <param name="obj">An object to compare with this instance. </param>
         /// <exception cref="ArgumentException"><paramref name="obj" /> is not the same type as this instance. </exception>
-        public int CompareTo(object obj)
+        public readonly int CompareTo(object obj)
         {
-#pragma warning disable SA1119 // Statement must not use unnecessary parenthesis
-            if (!(obj is SdkVersion version))
-#pragma warning restore SA1119 // Statement must not use unnecessary parenthesis
+            if (obj is not SdkVersion version)
                 throw new ArgumentException("Object must be of type SdkVersion", nameof(obj));
 
             return CompareTo(version);
@@ -263,7 +261,7 @@ namespace Colore.Data
         /// <returns>
         /// A <see cref="string"/> representing this struct instance.
         /// </returns>
-        public override string ToString()
+        public readonly override string ToString()
         {
             return $"{Major}.{Minor}.{Revision}";
         }

@@ -215,22 +215,22 @@ namespace Colore.Data
         /// </summary>
         /// <returns>The unsigned integer value of this <see cref="Color" />.</returns>
         [Pure]
-        public uint ToUInt32() => this;
+        public readonly uint ToUInt32() => this;
 
         /// <summary>
         /// Returns a value indicating whether this instance of <see cref="Color" />
-        /// is equal to an <see cref="object" /> <paramref name="other" />.
+        /// is equal to an <see cref="object" /> <paramref name="obj" />.
         /// </summary>
-        /// <param name="other">The <see cref="object" /> to check equality against.</param>
+        /// <param name="obj">The <see cref="object" /> to check equality against.</param>
         /// <returns><c>true</c> if the two are equal, <c>false</c> otherwise.</returns>
-        public override bool Equals(object? other)
+        public readonly override bool Equals(object? obj)
         {
-            if (other is null)
+            if (obj is null)
             {
                 return false;
             }
 
-            switch (other)
+            switch (obj)
             {
                 case Color color:
                     return Equals(color);
@@ -254,7 +254,7 @@ namespace Colore.Data
         /// be able to compare a keymode color to a non-keymode color.
         /// </remarks>
         [Pure]
-        public bool Equals(Color other)
+        public readonly bool Equals(Color other)
         {
             return Value.Equals(other.Value);
         }
@@ -271,7 +271,7 @@ namespace Colore.Data
         /// be able to compare a keymode color to a non-keymode color.
         /// </remarks>
         [Pure]
-        public bool Equals(uint other)
+        public readonly bool Equals(uint other)
         {
             return Value.Equals(other);
         }
@@ -289,7 +289,7 @@ namespace Colore.Data
         /// </summary>
         /// <returns>A unique has code.</returns>
         [Pure]
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             return (int)Value;
         }

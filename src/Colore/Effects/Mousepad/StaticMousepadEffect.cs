@@ -22,7 +22,6 @@
 //     "Razer" is a trademark of Razer USA Ltd.
 // </copyright>
 // ---------------------------------------------------------------------------------------
-#pragma warning disable CA1051 // Do not declare visible instance fields
 
 namespace Colore.Effects.Mousepad
 {
@@ -42,9 +41,7 @@ namespace Colore.Effects.Mousepad
     /// </summary>
     [JsonConverter(typeof(MousepadStaticConverter))]
     [StructLayout(LayoutKind.Sequential)]
-#pragma warning disable CA1716 // Identifiers should not match keywords
     public struct StaticMousepadEffect : IEquatable<StaticMousepadEffect>
-#pragma warning restore CA1716 // Identifiers should not match keywords
     {
         /// <summary>
         /// The color to use.
@@ -91,7 +88,7 @@ namespace Colore.Effects.Mousepad
         /// <returns>
         /// <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <c>false</c>.
         /// </returns>
-        public bool Equals(StaticMousepadEffect other)
+        public readonly bool Equals(StaticMousepadEffect other)
         {
             return Color.Equals(other.Color);
         }
@@ -104,9 +101,9 @@ namespace Colore.Effects.Mousepad
         /// <returns>
         /// <c>true</c> if <paramref name="obj" /> and this instance are the same type and represent the same value; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object? obj)
+        public readonly override bool Equals(object? obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return false;
             }
@@ -117,7 +114,7 @@ namespace Colore.Effects.Mousepad
         /// <inheritdoc />
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>A 32-bit signed integer that is the hash code for this instance.</returns>
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             return Color.GetHashCode();
         }

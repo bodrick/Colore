@@ -100,9 +100,9 @@ namespace Colore.Implementations
         /// Sets a parameter-less effect on this device.
         /// </summary>
         /// <param name="effectType">Effect to set.</param>
-        public async Task<Guid> SetEffectAsync(EffectType effectType)
+        public Task<Guid> SetEffectAsync(EffectType effectType)
         {
-            return await SetEffectAsync(effectType, IntPtr.Zero).ConfigureAwait(false);
+            return SetEffectAsync(effectType, IntPtr.Zero);
         }
 
         /// <inheritdoc />

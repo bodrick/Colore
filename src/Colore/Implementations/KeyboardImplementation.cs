@@ -371,11 +371,11 @@ namespace Colore.Implementations
         /// <summary>
         /// Clears the current effect on the Keyboard.
         /// </summary>
-        public override async Task<Guid> ClearAsync()
+        public override Task<Guid> ClearAsync()
         {
             _grid.Clear();
             _deathstalkerGrid.Clear();
-            return await SetEffectAsync(KeyboardEffectType.None).ConfigureAwait(false);
+            return SetEffectAsync(KeyboardEffectType.None);
         }
     }
 }

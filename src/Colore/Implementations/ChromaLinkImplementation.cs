@@ -95,10 +95,10 @@ namespace Colore.Implementations
         /// Sets the color of all lights in Chroma Link.
         /// </summary>
         /// <param name="color">Color to set.</param>
-        public override async Task<Guid> SetAllAsync(Color color)
+        public override Task<Guid> SetAllAsync(Color color)
         {
             _custom.Set(color);
-            return await SetCustomAsync(_custom).ConfigureAwait(false);
+            return SetCustomAsync(_custom);
         }
 
         /// <inheritdoc />
@@ -137,18 +137,18 @@ namespace Colore.Implementations
         /// Sets a <see cref="StaticChromaLinkEffect" /> effect on the Chroma Link.
         /// </summary>
         /// <param name="color">Color of the effect.</param>
-        public async Task<Guid> SetStaticAsync(Color color)
+        public Task<Guid> SetStaticAsync(Color color)
         {
-            return await SetStaticAsync(new StaticChromaLinkEffect(color)).ConfigureAwait(false);
+            return SetStaticAsync(new StaticChromaLinkEffect(color));
         }
 
         /// <inheritdoc cref="DeviceImplementation.ClearAsync" />
         /// <summary>
         /// Clears the current effect on the Chroma Link.
         /// </summary>
-        public override async Task<Guid> ClearAsync()
+        public override Task<Guid> ClearAsync()
         {
-            return await SetEffectAsync(ChromaLinkEffectType.None).ConfigureAwait(false);
+            return SetEffectAsync(ChromaLinkEffectType.None);
         }
     }
 }

@@ -415,10 +415,10 @@ namespace Colore.Native
         /// <summary>
         /// Registers for Chroma SDK notifications.
         /// </summary>
-        /// <param name="hwnd">App handle for the window handling events.</param>
-        public void RegisterEventNotifications(IntPtr hwnd)
+        /// <param name="windowHandle">App handle for the window handling events.</param>
+        public void RegisterEventNotifications(IntPtr windowHandle)
         {
-            var result = _nativeSdkMethods.RegisterEventNotification(hwnd);
+            var result = _nativeSdkMethods.RegisterEventNotification(windowHandle);
             if (!result)
             {
                 throw new NativeCallException("RegisterEventNotification", result);

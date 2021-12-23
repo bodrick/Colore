@@ -122,9 +122,9 @@ namespace Colore.Rest
         /// <typeparam name="T">The type of response to expect.</typeparam>
         /// <param name="resource">Resource path.</param>
         /// <returns>An instance of <see cref="IRestResponse{TData}" />.</returns>
-        public async Task<IRestResponse<T>> PutAsync<T>(string resource)
+        public Task<IRestResponse<T>> PutAsync<T>(string resource)
         {
-            return await PutAsync<T>(resource, null).ConfigureAwait(false);
+            return PutAsync<T>(resource, null);
         }
 
         /// <inheritdoc />
